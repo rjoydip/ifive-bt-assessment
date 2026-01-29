@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { LogOutIcon, MoreVerticalIcon, UserCircleIcon } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
@@ -65,7 +66,7 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <UserCircleIcon />
-                Account
+                <Link to="/dashboard/profile">Profile</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

@@ -23,6 +23,7 @@ export function SiteHeader() {
           />
           <h1 className="text-base font-medium">IFive BT</h1>
         </Link>
+
         <div className="ml-auto flex items-center gap-2">
           <NavUser user={data.user} />
         </div>

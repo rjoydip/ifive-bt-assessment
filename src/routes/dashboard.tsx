@@ -14,18 +14,11 @@ import { useSession } from '~/lib/auth/client'
 
 export const Route = createFileRoute('/dashboard')({
   component: Dashboard,
-  loader: async () => {
-    const { data: getUsers } = await (await fetch('/api/users')).json()
-    return {
-      getUsers: getUsers,
-    }
-  },
 })
 
 function Dashboard() {
   const routerState = useRouterState()
   const currentPath = routerState.location.pathname
-  const { getUsers } = Route.useLoaderData()
   const { data } = useSession()
   const user = data?.user
   const isAdmin = user?.role === 'admin'
@@ -48,7 +41,7 @@ function Dashboard() {
                 <Welcome />
               ) : currentPath === '/dashboard' ? (
                 isAdmin ? (
-                  <MembersTable data={getUsers} />
+                  <MembersTable />
                 ) : (
                   <Card className="relative mx-auto w-full max-w-sm pt-0">
                     <div className="absolute inset-0 z-30 aspect-video bg-black/35" />

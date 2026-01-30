@@ -21,30 +21,33 @@ model User {
   banExpires    DateTime?
   sessions      Session[]
   accounts      Account[]
+  members       Member[]
+  invitations   Invitation[]
+  role          String?
+  apikeys       Apikey[]
 
-  members     Member[]
-  invitations Invitation[]
-
-  role String?
-
-  apikeys Apikey[]
+  // New leave management relations
+  leaveCreditsPosted    LeaveCredit[]     @relation("PostedCredits")
+  leaveRequests         LeaveRequest[]
+  leaveBalances         LeaveBalance[]
+  approvedLeaveRequests LeaveRequest[]    @relation("ApprovedBy")
+  leaveTransactions     LeaveTransaction[]
 
   @@unique([email])
   @@map("user")
 }
 
 model Session {
-  id             String   @id
-  expiresAt      DateTime
-  token          String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  ipAddress      String?
-  userAgent      String?
-  userId         String
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  impersonatedBy String?
-
+  id                   String   @id
+  expiresAt            DateTime
+  token                String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  ipAddress            String?
+  userAgent            String?
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  impersonatedBy       String?
   activeOrganizationId String?
 
   @@unique([token])
@@ -85,14 +88,14 @@ model Verification {
 }
 
 model Organization {
-  id          String       @id
-  name        String
-  slug        String
-  logo        String?
-  createdAt   DateTime
-  metadata    String?
-  members     Member[]
-  invitations Invitation[]
+  id           String         @id
+  name         String
+  slug         String
+  logo         String?
+  createdAt    DateTime
+  metadata     String?
+  members      Member[]
+  invitations  Invitation[]
 
   @@unique([slug])
   @@map("organization")
@@ -156,4 +159,111 @@ model Apikey {
   @@index([key])
   @@index([userId])
   @@map("apikey")
+}
+
+// ============================================
+// LEAVE MANAGEMENT MODELS
+// ============================================
+
+// LeaveCredit: Represents admin posting of leave credits with expiration
+model LeaveCredit {
+  id           String   @id @default(cuid())
+  userId       String?  // null means "apply to all users"
+  user         User?    @relation("PostedCredits", fields: [userId], references: [id], onDelete: Cascade)
+  credits      Float    // in hours
+  hoursPerDay  Float    @default(8) // configurable hours per day
+  expiresAt    DateTime
+  notes        String?
+  postedAt     DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Track utilization and deductions
+  transactions LeaveTransaction[]
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("leave_credit")
+}
+
+// LeaveBalance: Current balance snapshot per user (for quick access)
+model LeaveBalance {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalCredits     Float    @default(0) // Total credits earned (sum of all posted credits)
+  usedCredits      Float    @default(0) // Credits used via leave requests
+  expiredCredits   Float    @default(0) // Credits deducted due to expiration
+  availableCredits Float    @default(0) // Calculated: totalCredits - usedCredits - expiredCredits
+  lastCalculatedAt DateTime @default(now())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("leave_balance")
+}
+
+// LeaveRequest: User's PTO request
+model LeaveRequest {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startDate   DateTime
+  endDate     DateTime
+  hoursPerDay Float    @default(8) // hours per day for this request
+  totalHours  Float    // calculated total hours
+  reason      String?
+  status      String   @default("pending") // pending, approved, rejected, cancelled
+  approvedBy  String?
+  approver    User?    @relation("ApprovedBy", fields: [approvedBy], references: [id], onDelete: SetNull)
+  approvedAt  DateTime?
+  rejectedAt  DateTime?
+  rejectionReason String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Track which credits were used (FIFO deduction)
+  transactions LeaveTransaction[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([startDate])
+  @@map("leave_request")
+}
+
+// LeaveTransaction: Tracks all credit movements (posting, utilization, expiration)
+model LeaveTransaction {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  leaveCreditId   String?       // null for balance adjustments
+  leaveCredit     LeaveCredit?  @relation(fields: [leaveCreditId], references: [id], onDelete: SetNull)
+  leaveRequestId  String?       // null for non-utilization transactions
+  leaveRequest    LeaveRequest? @relation(fields: [leaveRequestId], references: [id], onDelete: SetNull)
+  
+  type            String        // "CREDIT_POSTED", "CREDIT_USED", "CREDIT_EXPIRED", "BALANCE_ADJUSTMENT"
+  hours           Float         // positive for credits, negative for deductions
+  balanceBefore   Float         // balance before this transaction
+  balanceAfter    Float         // balance after this transaction
+  notes           String?
+  createdAt       DateTime      @default(now())
+
+  @@index([userId])
+  @@index([leaveCreditId])
+  @@index([leaveRequestId])
+  @@index([type])
+  @@index([createdAt])
+  @@map("leave_transaction")
+}
+
+// CreditUtilization: Detailed FIFO tracking of which credits are used for which requests
+model CreditUtilization {
+  id             String       @id @default(cuid())
+  leaveRequestId String
+  leaveCreditId  String
+  hoursUsed      Float        // how many hours from this credit batch were used
+  createdAt      DateTime     @default(now())
+
+  @@index([leaveRequestId])
+  @@index([leaveCreditId])
+  @@map("credit_utilization")
 }

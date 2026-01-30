@@ -235,6 +235,11 @@ export type UserWhereInput = {
   members?: Prisma.MemberListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
   apikeys?: Prisma.ApikeyListRelationFilter
+  leaveCreditsPosted?: Prisma.LeaveCreditListRelationFilter
+  leaveRequests?: Prisma.LeaveRequestListRelationFilter
+  leaveBalances?: Prisma.LeaveBalanceListRelationFilter
+  approvedLeaveRequests?: Prisma.LeaveRequestListRelationFilter
+  leaveTransactions?: Prisma.LeaveTransactionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -254,6 +259,11 @@ export type UserOrderByWithRelationInput = {
   members?: Prisma.MemberOrderByRelationAggregateInput
   invitations?: Prisma.InvitationOrderByRelationAggregateInput
   apikeys?: Prisma.ApikeyOrderByRelationAggregateInput
+  leaveCreditsPosted?: Prisma.LeaveCreditOrderByRelationAggregateInput
+  leaveRequests?: Prisma.LeaveRequestOrderByRelationAggregateInput
+  leaveBalances?: Prisma.LeaveBalanceOrderByRelationAggregateInput
+  approvedLeaveRequests?: Prisma.LeaveRequestOrderByRelationAggregateInput
+  leaveTransactions?: Prisma.LeaveTransactionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -276,6 +286,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   members?: Prisma.MemberListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
   apikeys?: Prisma.ApikeyListRelationFilter
+  leaveCreditsPosted?: Prisma.LeaveCreditListRelationFilter
+  leaveRequests?: Prisma.LeaveRequestListRelationFilter
+  leaveBalances?: Prisma.LeaveBalanceListRelationFilter
+  approvedLeaveRequests?: Prisma.LeaveRequestListRelationFilter
+  leaveTransactions?: Prisma.LeaveTransactionListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -329,6 +344,11 @@ export type UserCreateInput = {
   members?: Prisma.MemberCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -348,6 +368,11 @@ export type UserUncheckedCreateInput = {
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -367,6 +392,11 @@ export type UserUpdateInput = {
   members?: Prisma.MemberUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -386,6 +416,11 @@ export type UserUncheckedUpdateInput = {
   members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -475,6 +510,11 @@ export type UserMinOrderByAggregateInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -571,6 +611,80 @@ export type UserUpdateOneRequiredWithoutApikeysNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApikeysInput, Prisma.UserUpdateWithoutApikeysInput>, Prisma.UserUncheckedUpdateWithoutApikeysInput>
 }
 
+export type UserCreateNestedOneWithoutLeaveCreditsPostedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedCreateWithoutLeaveCreditsPostedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveCreditsPostedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutLeaveCreditsPostedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedCreateWithoutLeaveCreditsPostedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveCreditsPostedInput
+  upsert?: Prisma.UserUpsertWithoutLeaveCreditsPostedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeaveCreditsPostedInput, Prisma.UserUpdateWithoutLeaveCreditsPostedInput>, Prisma.UserUncheckedUpdateWithoutLeaveCreditsPostedInput>
+}
+
+export type UserCreateNestedOneWithoutLeaveBalancesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveBalancesInput, Prisma.UserUncheckedCreateWithoutLeaveBalancesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveBalancesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLeaveBalancesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveBalancesInput, Prisma.UserUncheckedCreateWithoutLeaveBalancesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveBalancesInput
+  upsert?: Prisma.UserUpsertWithoutLeaveBalancesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeaveBalancesInput, Prisma.UserUpdateWithoutLeaveBalancesInput>, Prisma.UserUncheckedUpdateWithoutLeaveBalancesInput>
+}
+
+export type UserCreateNestedOneWithoutLeaveRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutLeaveRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutApprovedLeaveRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutApprovedLeaveRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovedLeaveRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLeaveRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutLeaveRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveRequestsInput
+  upsert?: Prisma.UserUpsertWithoutLeaveRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeaveRequestsInput, Prisma.UserUpdateWithoutLeaveRequestsInput>, Prisma.UserUncheckedUpdateWithoutLeaveRequestsInput>
+}
+
+export type UserUpdateOneWithoutApprovedLeaveRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutApprovedLeaveRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovedLeaveRequestsInput
+  upsert?: Prisma.UserUpsertWithoutApprovedLeaveRequestsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApprovedLeaveRequestsInput, Prisma.UserUpdateWithoutApprovedLeaveRequestsInput>, Prisma.UserUncheckedUpdateWithoutApprovedLeaveRequestsInput>
+}
+
+export type UserCreateNestedOneWithoutLeaveTransactionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveTransactionsInput, Prisma.UserUncheckedCreateWithoutLeaveTransactionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveTransactionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLeaveTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveTransactionsInput, Prisma.UserUncheckedCreateWithoutLeaveTransactionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveTransactionsInput
+  upsert?: Prisma.UserUpsertWithoutLeaveTransactionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeaveTransactionsInput, Prisma.UserUpdateWithoutLeaveTransactionsInput>, Prisma.UserUncheckedUpdateWithoutLeaveTransactionsInput>
+}
+
 export type UserCreateWithoutSessionsInput = {
   id: string
   name: string
@@ -587,6 +701,11 @@ export type UserCreateWithoutSessionsInput = {
   members?: Prisma.MemberCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -605,6 +724,11 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -639,6 +763,11 @@ export type UserUpdateWithoutSessionsInput = {
   members?: Prisma.MemberUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -657,6 +786,11 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -675,6 +809,11 @@ export type UserCreateWithoutAccountsInput = {
   members?: Prisma.MemberCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -693,6 +832,11 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -727,6 +871,11 @@ export type UserUpdateWithoutAccountsInput = {
   members?: Prisma.MemberUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -745,6 +894,11 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMembersInput = {
@@ -763,6 +917,11 @@ export type UserCreateWithoutMembersInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMembersInput = {
@@ -781,6 +940,11 @@ export type UserUncheckedCreateWithoutMembersInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMembersInput = {
@@ -815,6 +979,11 @@ export type UserUpdateWithoutMembersInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembersInput = {
@@ -833,6 +1002,11 @@ export type UserUncheckedUpdateWithoutMembersInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInvitationsInput = {
@@ -851,6 +1025,11 @@ export type UserCreateWithoutInvitationsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   members?: Prisma.MemberCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInvitationsInput = {
@@ -869,6 +1048,11 @@ export type UserUncheckedCreateWithoutInvitationsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInvitationsInput = {
@@ -903,6 +1087,11 @@ export type UserUpdateWithoutInvitationsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   members?: Prisma.MemberUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationsInput = {
@@ -921,6 +1110,11 @@ export type UserUncheckedUpdateWithoutInvitationsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutApikeysInput = {
@@ -939,6 +1133,11 @@ export type UserCreateWithoutApikeysInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   members?: Prisma.MemberCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutApikeysInput = {
@@ -957,6 +1156,11 @@ export type UserUncheckedCreateWithoutApikeysInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutApikeysInput = {
@@ -991,6 +1195,11 @@ export type UserUpdateWithoutApikeysInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   members?: Prisma.MemberUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApikeysInput = {
@@ -1009,6 +1218,551 @@ export type UserUncheckedUpdateWithoutApikeysInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLeaveCreditsPostedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLeaveCreditsPostedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLeaveCreditsPostedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedCreateWithoutLeaveCreditsPostedInput>
+}
+
+export type UserUpsertWithoutLeaveCreditsPostedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedUpdateWithoutLeaveCreditsPostedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedCreateWithoutLeaveCreditsPostedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLeaveCreditsPostedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeaveCreditsPostedInput, Prisma.UserUncheckedUpdateWithoutLeaveCreditsPostedInput>
+}
+
+export type UserUpdateWithoutLeaveCreditsPostedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLeaveCreditsPostedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLeaveBalancesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLeaveBalancesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLeaveBalancesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveBalancesInput, Prisma.UserUncheckedCreateWithoutLeaveBalancesInput>
+}
+
+export type UserUpsertWithoutLeaveBalancesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeaveBalancesInput, Prisma.UserUncheckedUpdateWithoutLeaveBalancesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveBalancesInput, Prisma.UserUncheckedCreateWithoutLeaveBalancesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLeaveBalancesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeaveBalancesInput, Prisma.UserUncheckedUpdateWithoutLeaveBalancesInput>
+}
+
+export type UserUpdateWithoutLeaveBalancesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLeaveBalancesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLeaveRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLeaveRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLeaveRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutLeaveRequestsInput>
+}
+
+export type UserCreateWithoutApprovedLeaveRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  leaveTransactions?: Prisma.LeaveTransactionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutApprovedLeaveRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutApprovedLeaveRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutApprovedLeaveRequestsInput>
+}
+
+export type UserUpsertWithoutLeaveRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeaveRequestsInput, Prisma.UserUncheckedUpdateWithoutLeaveRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutLeaveRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLeaveRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeaveRequestsInput, Prisma.UserUncheckedUpdateWithoutLeaveRequestsInput>
+}
+
+export type UserUpdateWithoutLeaveRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLeaveRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutApprovedLeaveRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedUpdateWithoutApprovedLeaveRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedCreateWithoutApprovedLeaveRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutApprovedLeaveRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutApprovedLeaveRequestsInput, Prisma.UserUncheckedUpdateWithoutApprovedLeaveRequestsInput>
+}
+
+export type UserUpdateWithoutApprovedLeaveRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutApprovedLeaveRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  leaveTransactions?: Prisma.LeaveTransactionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLeaveTransactionsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
+}
+
+export type UserUncheckedCreateWithoutLeaveTransactionsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  role?: string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedCreateNestedManyWithoutUserInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
+}
+
+export type UserCreateOrConnectWithoutLeaveTransactionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveTransactionsInput, Prisma.UserUncheckedCreateWithoutLeaveTransactionsInput>
+}
+
+export type UserUpsertWithoutLeaveTransactionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeaveTransactionsInput, Prisma.UserUncheckedUpdateWithoutLeaveTransactionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveTransactionsInput, Prisma.UserUncheckedCreateWithoutLeaveTransactionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLeaveTransactionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeaveTransactionsInput, Prisma.UserUncheckedUpdateWithoutLeaveTransactionsInput>
+}
+
+export type UserUpdateWithoutLeaveTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLeaveTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  leaveCreditsPosted?: Prisma.LeaveCreditUncheckedUpdateManyWithoutUserNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  leaveBalances?: Prisma.LeaveBalanceUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
 
@@ -1022,6 +1776,11 @@ export type UserCountOutputType = {
   members: number
   invitations: number
   apikeys: number
+  leaveCreditsPosted: number
+  leaveRequests: number
+  leaveBalances: number
+  approvedLeaveRequests: number
+  leaveTransactions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1030,6 +1789,11 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   members?: boolean | UserCountOutputTypeCountMembersArgs
   invitations?: boolean | UserCountOutputTypeCountInvitationsArgs
   apikeys?: boolean | UserCountOutputTypeCountApikeysArgs
+  leaveCreditsPosted?: boolean | UserCountOutputTypeCountLeaveCreditsPostedArgs
+  leaveRequests?: boolean | UserCountOutputTypeCountLeaveRequestsArgs
+  leaveBalances?: boolean | UserCountOutputTypeCountLeaveBalancesArgs
+  approvedLeaveRequests?: boolean | UserCountOutputTypeCountApprovedLeaveRequestsArgs
+  leaveTransactions?: boolean | UserCountOutputTypeCountLeaveTransactionsArgs
 }
 
 /**
@@ -1077,6 +1841,41 @@ export type UserCountOutputTypeCountApikeysArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.ApikeyWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLeaveCreditsPostedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveCreditWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLeaveRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLeaveBalancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveBalanceWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApprovedLeaveRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLeaveTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveTransactionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1095,6 +1894,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   members?: boolean | Prisma.User$membersArgs<ExtArgs>
   invitations?: boolean | Prisma.User$invitationsArgs<ExtArgs>
   apikeys?: boolean | Prisma.User$apikeysArgs<ExtArgs>
+  leaveCreditsPosted?: boolean | Prisma.User$leaveCreditsPostedArgs<ExtArgs>
+  leaveRequests?: boolean | Prisma.User$leaveRequestsArgs<ExtArgs>
+  leaveBalances?: boolean | Prisma.User$leaveBalancesArgs<ExtArgs>
+  approvedLeaveRequests?: boolean | Prisma.User$approvedLeaveRequestsArgs<ExtArgs>
+  leaveTransactions?: boolean | Prisma.User$leaveTransactionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1147,6 +1951,11 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   members?: boolean | Prisma.User$membersArgs<ExtArgs>
   invitations?: boolean | Prisma.User$invitationsArgs<ExtArgs>
   apikeys?: boolean | Prisma.User$apikeysArgs<ExtArgs>
+  leaveCreditsPosted?: boolean | Prisma.User$leaveCreditsPostedArgs<ExtArgs>
+  leaveRequests?: boolean | Prisma.User$leaveRequestsArgs<ExtArgs>
+  leaveBalances?: boolean | Prisma.User$leaveBalancesArgs<ExtArgs>
+  approvedLeaveRequests?: boolean | Prisma.User$approvedLeaveRequestsArgs<ExtArgs>
+  leaveTransactions?: boolean | Prisma.User$leaveTransactionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1160,6 +1969,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     members: Prisma.$MemberPayload<ExtArgs>[]
     invitations: Prisma.$InvitationPayload<ExtArgs>[]
     apikeys: Prisma.$ApikeyPayload<ExtArgs>[]
+    leaveCreditsPosted: Prisma.$LeaveCreditPayload<ExtArgs>[]
+    leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
+    leaveBalances: Prisma.$LeaveBalancePayload<ExtArgs>[]
+    approvedLeaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
+    leaveTransactions: Prisma.$LeaveTransactionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1572,6 +2386,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   members<T extends Prisma.User$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitations<T extends Prisma.User$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   apikeys<T extends Prisma.User$apikeysArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$apikeysArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApikeyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leaveCreditsPosted<T extends Prisma.User$leaveCreditsPostedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leaveCreditsPostedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveCreditPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leaveRequests<T extends Prisma.User$leaveRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leaveBalances<T extends Prisma.User$leaveBalancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leaveBalancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveBalancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvedLeaveRequests<T extends Prisma.User$approvedLeaveRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvedLeaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leaveTransactions<T extends Prisma.User$leaveTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leaveTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2117,6 +2936,126 @@ export type User$apikeysArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.ApikeyScalarFieldEnum | Prisma.ApikeyScalarFieldEnum[]
+}
+
+/**
+ * User.leaveCreditsPosted
+ */
+export type User$leaveCreditsPostedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeaveCredit
+   */
+  select?: Prisma.LeaveCreditSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeaveCredit
+   */
+  omit?: Prisma.LeaveCreditOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeaveCreditInclude<ExtArgs> | null
+  where?: Prisma.LeaveCreditWhereInput
+  orderBy?: Prisma.LeaveCreditOrderByWithRelationInput | Prisma.LeaveCreditOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveCreditWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeaveCreditScalarFieldEnum | Prisma.LeaveCreditScalarFieldEnum[]
+}
+
+/**
+ * User.leaveRequests
+ */
+export type User$leaveRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeaveRequest
+   */
+  select?: Prisma.LeaveRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeaveRequest
+   */
+  omit?: Prisma.LeaveRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeaveRequestInclude<ExtArgs> | null
+  where?: Prisma.LeaveRequestWhereInput
+  orderBy?: Prisma.LeaveRequestOrderByWithRelationInput | Prisma.LeaveRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeaveRequestScalarFieldEnum | Prisma.LeaveRequestScalarFieldEnum[]
+}
+
+/**
+ * User.leaveBalances
+ */
+export type User$leaveBalancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeaveBalance
+   */
+  select?: Prisma.LeaveBalanceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeaveBalance
+   */
+  omit?: Prisma.LeaveBalanceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeaveBalanceInclude<ExtArgs> | null
+  where?: Prisma.LeaveBalanceWhereInput
+  orderBy?: Prisma.LeaveBalanceOrderByWithRelationInput | Prisma.LeaveBalanceOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveBalanceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeaveBalanceScalarFieldEnum | Prisma.LeaveBalanceScalarFieldEnum[]
+}
+
+/**
+ * User.approvedLeaveRequests
+ */
+export type User$approvedLeaveRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeaveRequest
+   */
+  select?: Prisma.LeaveRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeaveRequest
+   */
+  omit?: Prisma.LeaveRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeaveRequestInclude<ExtArgs> | null
+  where?: Prisma.LeaveRequestWhereInput
+  orderBy?: Prisma.LeaveRequestOrderByWithRelationInput | Prisma.LeaveRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeaveRequestScalarFieldEnum | Prisma.LeaveRequestScalarFieldEnum[]
+}
+
+/**
+ * User.leaveTransactions
+ */
+export type User$leaveTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LeaveTransaction
+   */
+  select?: Prisma.LeaveTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LeaveTransaction
+   */
+  omit?: Prisma.LeaveTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeaveTransactionInclude<ExtArgs> | null
+  where?: Prisma.LeaveTransactionWhereInput
+  orderBy?: Prisma.LeaveTransactionOrderByWithRelationInput | Prisma.LeaveTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeaveTransactionScalarFieldEnum | Prisma.LeaveTransactionScalarFieldEnum[]
 }
 
 /**

@@ -65,7 +65,7 @@ function SignUp({ className, ...props }: React.ComponentProps<'div'>) {
           email,
           password,
           name,
-          callbackURL: '/dashboard',
+          callbackURL: '/signin',
         },
         {
           async onSuccess(ctx) {
@@ -76,12 +76,12 @@ function SignUp({ className, ...props }: React.ComponentProps<'div'>) {
                 action: {
                   label: 'Undo',
                   onClick: () => {
-                    redirect({ to: '/dashboard', replace: true })
+                    redirect({ to: '/signin', replace: true })
                   },
                 },
               },
             )
-            redirect({ to: '/dashboard', replace: true })
+            redirect({ to: '/signin', replace: true })
           },
           onError: (ctx) => {
             toast.error(ctx.error.message, {
@@ -89,11 +89,11 @@ function SignUp({ className, ...props }: React.ComponentProps<'div'>) {
               action: {
                 label: 'Undo',
                 onClick: () => {
-                  redirect({ to: '/', replace: true })
+                  redirect({ to: '/signup', replace: true })
                 },
               },
             })
-            redirect({ to: '/', replace: true })
+            redirect({ to: '/signup', replace: true })
           },
         },
       )

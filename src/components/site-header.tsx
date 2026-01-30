@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowUpCircleIcon, LogIn } from 'lucide-react'
 import { NavUser } from '~/components/nav-user'
 import { useSession } from '~/lib/auth/client'
+import { Button } from './ui/button'
 
 export function SiteHeader() {
   const { data } = useSession()
@@ -19,6 +20,19 @@ export function SiteHeader() {
           />
           <h1 className="text-base font-medium">IFive BT</h1>
         </Link>
+
+        <div className="flex flex-row gap-2 mx-4">
+          {user?.role === 'user' && (
+            <Button variant="ghost" asChild>
+              <Link to="/dashboard/user/pto">Apply Leave</Link>
+            </Button>
+          )}
+          {user?.role === 'admin' && (
+            <Button variant="ghost" asChild>
+              <Link to="/dashboard/user/pto">Post Leave Credits</Link>
+            </Button>
+          )}
+        </div>
 
         <div className="ml-auto flex items-center gap-2">
           {user ? (

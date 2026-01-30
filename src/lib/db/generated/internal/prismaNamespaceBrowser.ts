@@ -58,7 +58,12 @@ export const ModelName = {
   Organization: 'Organization',
   Member: 'Member',
   Invitation: 'Invitation',
-  Apikey: 'Apikey'
+  Apikey: 'Apikey',
+  LeaveCredit: 'LeaveCredit',
+  LeaveBalance: 'LeaveBalance',
+  LeaveRequest: 'LeaveRequest',
+  LeaveTransaction: 'LeaveTransaction',
+  CreditUtilization: 'CreditUtilization'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -203,6 +208,83 @@ export const ApikeyScalarFieldEnum = {
 } as const
 
 export type ApikeyScalarFieldEnum = (typeof ApikeyScalarFieldEnum)[keyof typeof ApikeyScalarFieldEnum]
+
+
+export const LeaveCreditScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  credits: 'credits',
+  hoursPerDay: 'hoursPerDay',
+  expiresAt: 'expiresAt',
+  notes: 'notes',
+  postedAt: 'postedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveCreditScalarFieldEnum = (typeof LeaveCreditScalarFieldEnum)[keyof typeof LeaveCreditScalarFieldEnum]
+
+
+export const LeaveBalanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  totalCredits: 'totalCredits',
+  usedCredits: 'usedCredits',
+  expiredCredits: 'expiredCredits',
+  availableCredits: 'availableCredits',
+  lastCalculatedAt: 'lastCalculatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveBalanceScalarFieldEnum = (typeof LeaveBalanceScalarFieldEnum)[keyof typeof LeaveBalanceScalarFieldEnum]
+
+
+export const LeaveRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  hoursPerDay: 'hoursPerDay',
+  totalHours: 'totalHours',
+  reason: 'reason',
+  status: 'status',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  rejectedAt: 'rejectedAt',
+  rejectionReason: 'rejectionReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
+
+
+export const LeaveTransactionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  leaveCreditId: 'leaveCreditId',
+  leaveRequestId: 'leaveRequestId',
+  type: 'type',
+  hours: 'hours',
+  balanceBefore: 'balanceBefore',
+  balanceAfter: 'balanceAfter',
+  notes: 'notes',
+  createdAt: 'createdAt'
+} as const
+
+export type LeaveTransactionScalarFieldEnum = (typeof LeaveTransactionScalarFieldEnum)[keyof typeof LeaveTransactionScalarFieldEnum]
+
+
+export const CreditUtilizationScalarFieldEnum = {
+  id: 'id',
+  leaveRequestId: 'leaveRequestId',
+  leaveCreditId: 'leaveCreditId',
+  hoursUsed: 'hoursUsed',
+  createdAt: 'createdAt'
+} as const
+
+export type CreditUtilizationScalarFieldEnum = (typeof CreditUtilizationScalarFieldEnum)[keyof typeof CreditUtilizationScalarFieldEnum]
 
 
 export const SortOrder = {

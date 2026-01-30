@@ -5,6 +5,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { useQuery } from '@tanstack/react-query'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -75,6 +76,8 @@ export const schema = z.object({
   role: z.enum(['admin', 'user']).default('user'),
   updatedAt: z.string(),
 })
+
+type User = z.infer<typeof schema>
 
 const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
@@ -255,14 +258,22 @@ function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
   )
 }
 
-export function MembersTable({
-  data: initialData,
-}: {
-  data: z.infer<typeof schema>[]
-}) {
+async function fetchUsers() {
+  const response = await fetch(`/api/users?roles=admin&user`)
+  const { data } = await response.json()
+  return data
+}
+
+export function MembersTable() {
   const { data: currentUser } = useSession()
+  const { data: getUsers = [] } = useQuery<User[]>({
+    queryKey: ['users'],
+    queryFn: () => fetchUsers(),
+    staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
+  })
+  console.log(getUsers)
   const [data] = React.useState(() =>
-    initialData.filter(({ id }) => id !== currentUser?.user.id),
+    getUsers.filter(({ id }) => id !== currentUser?.user.id),
   )
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =

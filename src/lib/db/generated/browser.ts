@@ -57,3 +57,28 @@ export type Invitation = Prisma.InvitationModel
  * 
  */
 export type Apikey = Prisma.ApikeyModel
+/**
+ * Model LeaveCredit
+ * 
+ */
+export type LeaveCredit = Prisma.LeaveCreditModel
+/**
+ * Model LeaveBalance
+ * 
+ */
+export type LeaveBalance = Prisma.LeaveBalanceModel
+/**
+ * Model LeaveRequest
+ * 
+ */
+export type LeaveRequest = Prisma.LeaveRequestModel
+/**
+ * Model LeaveTransaction
+ * 
+ */
+export type LeaveTransaction = Prisma.LeaveTransactionModel
+/**
+ * Model CreditUtilization
+ * 
+ */
+export type CreditUtilization = Prisma.CreditUtilizationModel

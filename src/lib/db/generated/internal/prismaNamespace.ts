@@ -391,7 +391,12 @@ export const ModelName = {
   Organization: 'Organization',
   Member: 'Member',
   Invitation: 'Invitation',
-  Apikey: 'Apikey'
+  Apikey: 'Apikey',
+  LeaveCredit: 'LeaveCredit',
+  LeaveBalance: 'LeaveBalance',
+  LeaveRequest: 'LeaveRequest',
+  LeaveTransaction: 'LeaveTransaction',
+  CreditUtilization: 'CreditUtilization'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "member" | "invitation" | "apikey"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "member" | "invitation" | "apikey" | "leaveCredit" | "leaveBalance" | "leaveRequest" | "leaveTransaction" | "creditUtilization"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1008,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    LeaveCredit: {
+      payload: Prisma.$LeaveCreditPayload<ExtArgs>
+      fields: Prisma.LeaveCreditFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeaveCreditFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeaveCreditFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        findFirst: {
+          args: Prisma.LeaveCreditFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeaveCreditFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        findMany: {
+          args: Prisma.LeaveCreditFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>[]
+        }
+        create: {
+          args: Prisma.LeaveCreditCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        createMany: {
+          args: Prisma.LeaveCreditCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeaveCreditCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>[]
+        }
+        delete: {
+          args: Prisma.LeaveCreditDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        update: {
+          args: Prisma.LeaveCreditUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        deleteMany: {
+          args: Prisma.LeaveCreditDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeaveCreditUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeaveCreditUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>[]
+        }
+        upsert: {
+          args: Prisma.LeaveCreditUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveCreditPayload>
+        }
+        aggregate: {
+          args: Prisma.LeaveCreditAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLeaveCredit>
+        }
+        groupBy: {
+          args: Prisma.LeaveCreditGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveCreditGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeaveCreditCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveCreditCountAggregateOutputType> | number
+        }
+      }
+    }
+    LeaveBalance: {
+      payload: Prisma.$LeaveBalancePayload<ExtArgs>
+      fields: Prisma.LeaveBalanceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeaveBalanceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeaveBalanceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        findFirst: {
+          args: Prisma.LeaveBalanceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeaveBalanceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        findMany: {
+          args: Prisma.LeaveBalanceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>[]
+        }
+        create: {
+          args: Prisma.LeaveBalanceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        createMany: {
+          args: Prisma.LeaveBalanceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeaveBalanceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>[]
+        }
+        delete: {
+          args: Prisma.LeaveBalanceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        update: {
+          args: Prisma.LeaveBalanceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        deleteMany: {
+          args: Prisma.LeaveBalanceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeaveBalanceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeaveBalanceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>[]
+        }
+        upsert: {
+          args: Prisma.LeaveBalanceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveBalancePayload>
+        }
+        aggregate: {
+          args: Prisma.LeaveBalanceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLeaveBalance>
+        }
+        groupBy: {
+          args: Prisma.LeaveBalanceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveBalanceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeaveBalanceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveBalanceCountAggregateOutputType> | number
+        }
+      }
+    }
+    LeaveRequest: {
+      payload: Prisma.$LeaveRequestPayload<ExtArgs>
+      fields: Prisma.LeaveRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeaveRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeaveRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.LeaveRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeaveRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        findMany: {
+          args: Prisma.LeaveRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>[]
+        }
+        create: {
+          args: Prisma.LeaveRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        createMany: {
+          args: Prisma.LeaveRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeaveRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.LeaveRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        update: {
+          args: Prisma.LeaveRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.LeaveRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeaveRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeaveRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.LeaveRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.LeaveRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLeaveRequest>
+        }
+        groupBy: {
+          args: Prisma.LeaveRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeaveRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveRequestCountAggregateOutputType> | number
+        }
+      }
+    }
+    LeaveTransaction: {
+      payload: Prisma.$LeaveTransactionPayload<ExtArgs>
+      fields: Prisma.LeaveTransactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeaveTransactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeaveTransactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        findFirst: {
+          args: Prisma.LeaveTransactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeaveTransactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        findMany: {
+          args: Prisma.LeaveTransactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>[]
+        }
+        create: {
+          args: Prisma.LeaveTransactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        createMany: {
+          args: Prisma.LeaveTransactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeaveTransactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>[]
+        }
+        delete: {
+          args: Prisma.LeaveTransactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        update: {
+          args: Prisma.LeaveTransactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.LeaveTransactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeaveTransactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeaveTransactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.LeaveTransactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeaveTransactionPayload>
+        }
+        aggregate: {
+          args: Prisma.LeaveTransactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLeaveTransaction>
+        }
+        groupBy: {
+          args: Prisma.LeaveTransactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveTransactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeaveTransactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeaveTransactionCountAggregateOutputType> | number
+        }
+      }
+    }
+    CreditUtilization: {
+      payload: Prisma.$CreditUtilizationPayload<ExtArgs>
+      fields: Prisma.CreditUtilizationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreditUtilizationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreditUtilizationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        findFirst: {
+          args: Prisma.CreditUtilizationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreditUtilizationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        findMany: {
+          args: Prisma.CreditUtilizationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>[]
+        }
+        create: {
+          args: Prisma.CreditUtilizationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        createMany: {
+          args: Prisma.CreditUtilizationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreditUtilizationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>[]
+        }
+        delete: {
+          args: Prisma.CreditUtilizationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        update: {
+          args: Prisma.CreditUtilizationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreditUtilizationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreditUtilizationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreditUtilizationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreditUtilizationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditUtilizationPayload>
+        }
+        aggregate: {
+          args: Prisma.CreditUtilizationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditUtilization>
+        }
+        groupBy: {
+          args: Prisma.CreditUtilizationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditUtilizationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreditUtilizationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditUtilizationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1168,6 +1543,83 @@ export const ApikeyScalarFieldEnum = {
 } as const
 
 export type ApikeyScalarFieldEnum = (typeof ApikeyScalarFieldEnum)[keyof typeof ApikeyScalarFieldEnum]
+
+
+export const LeaveCreditScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  credits: 'credits',
+  hoursPerDay: 'hoursPerDay',
+  expiresAt: 'expiresAt',
+  notes: 'notes',
+  postedAt: 'postedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveCreditScalarFieldEnum = (typeof LeaveCreditScalarFieldEnum)[keyof typeof LeaveCreditScalarFieldEnum]
+
+
+export const LeaveBalanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  totalCredits: 'totalCredits',
+  usedCredits: 'usedCredits',
+  expiredCredits: 'expiredCredits',
+  availableCredits: 'availableCredits',
+  lastCalculatedAt: 'lastCalculatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveBalanceScalarFieldEnum = (typeof LeaveBalanceScalarFieldEnum)[keyof typeof LeaveBalanceScalarFieldEnum]
+
+
+export const LeaveRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  hoursPerDay: 'hoursPerDay',
+  totalHours: 'totalHours',
+  reason: 'reason',
+  status: 'status',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  rejectedAt: 'rejectedAt',
+  rejectionReason: 'rejectionReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
+
+
+export const LeaveTransactionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  leaveCreditId: 'leaveCreditId',
+  leaveRequestId: 'leaveRequestId',
+  type: 'type',
+  hours: 'hours',
+  balanceBefore: 'balanceBefore',
+  balanceAfter: 'balanceAfter',
+  notes: 'notes',
+  createdAt: 'createdAt'
+} as const
+
+export type LeaveTransactionScalarFieldEnum = (typeof LeaveTransactionScalarFieldEnum)[keyof typeof LeaveTransactionScalarFieldEnum]
+
+
+export const CreditUtilizationScalarFieldEnum = {
+  id: 'id',
+  leaveRequestId: 'leaveRequestId',
+  leaveCreditId: 'leaveCreditId',
+  hoursUsed: 'hoursUsed',
+  createdAt: 'createdAt'
+} as const
+
+export type CreditUtilizationScalarFieldEnum = (typeof CreditUtilizationScalarFieldEnum)[keyof typeof CreditUtilizationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1365,6 +1817,11 @@ export type GlobalOmitConfig = {
   member?: Prisma.MemberOmit
   invitation?: Prisma.InvitationOmit
   apikey?: Prisma.ApikeyOmit
+  leaveCredit?: Prisma.LeaveCreditOmit
+  leaveBalance?: Prisma.LeaveBalanceOmit
+  leaveRequest?: Prisma.LeaveRequestOmit
+  leaveTransaction?: Prisma.LeaveTransactionOmit
+  creditUtilization?: Prisma.CreditUtilizationOmit
 }
 
 /* Types for Logging */

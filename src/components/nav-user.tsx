@@ -91,12 +91,14 @@ export function NavUser() {
             <DropdownMenuSeparator />
 
             <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Link to="/dashboard">
-                  <LayoutDashboard />
-                  Dashboard
-                </Link>
-              </DropdownMenuItem>
+              {user?.role === 'admin' && (
+                <DropdownMenuItem asChild>
+                  <Link to="/dashboard">
+                    <LayoutDashboard />
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem asChild>
                 <Link to="/dashboard/profile">
                   <UserCircleIcon />

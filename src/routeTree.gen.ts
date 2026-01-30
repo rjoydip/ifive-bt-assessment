@@ -14,6 +14,8 @@ import { Route as SigninRouteImport } from './routes/signin'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardUserPtoRouteImport } from './routes/dashboard.user.pto'
+import { Route as DashboardLeaveCreditsRouteImport } from './routes/dashboard.leave.credits'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -40,6 +42,16 @@ const DashboardProfileRoute = DashboardProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardUserPtoRoute = DashboardUserPtoRouteImport.update({
+  id: '/user/pto',
+  path: '/user/pto',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLeaveCreditsRoute = DashboardLeaveCreditsRouteImport.update({
+  id: '/leave/credits',
+  path: '/leave/credits',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +59,8 @@ export interface FileRoutesByFullPath {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/leave/credits': typeof DashboardLeaveCreditsRoute
+  '/dashboard/user/pto': typeof DashboardUserPtoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/leave/credits': typeof DashboardLeaveCreditsRoute
+  '/dashboard/user/pto': typeof DashboardUserPtoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,12 +78,28 @@ export interface FileRoutesById {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/leave/credits': typeof DashboardLeaveCreditsRoute
+  '/dashboard/user/pto': typeof DashboardUserPtoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/signin' | '/signup' | '/dashboard/profile'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/signin'
+    | '/signup'
+    | '/dashboard/profile'
+    | '/dashboard/leave/credits'
+    | '/dashboard/user/pto'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/signin' | '/signup' | '/dashboard/profile'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/signin'
+    | '/signup'
+    | '/dashboard/profile'
+    | '/dashboard/leave/credits'
+    | '/dashboard/user/pto'
   id:
     | '__root__'
     | '/'
@@ -75,6 +107,8 @@ export interface FileRouteTypes {
     | '/signin'
     | '/signup'
     | '/dashboard/profile'
+    | '/dashboard/leave/credits'
+    | '/dashboard/user/pto'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,15 +155,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardProfileRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/user/pto': {
+      id: '/dashboard/user/pto'
+      path: '/user/pto'
+      fullPath: '/dashboard/user/pto'
+      preLoaderRoute: typeof DashboardUserPtoRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/leave/credits': {
+      id: '/dashboard/leave/credits'
+      path: '/leave/credits'
+      fullPath: '/dashboard/leave/credits'
+      preLoaderRoute: typeof DashboardLeaveCreditsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
   DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardLeaveCreditsRoute: typeof DashboardLeaveCreditsRoute
+  DashboardUserPtoRoute: typeof DashboardUserPtoRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardProfileRoute: DashboardProfileRoute,
+  DashboardLeaveCreditsRoute: DashboardLeaveCreditsRoute,
+  DashboardUserPtoRoute: DashboardUserPtoRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(

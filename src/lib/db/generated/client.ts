@@ -74,3 +74,8 @@ export type Member = Prisma.MemberModel
  * 
  */
 export type Invitation = Prisma.InvitationModel
+/**
+ * Model Apikey
+ * 
+ */
+export type Apikey = Prisma.ApikeyModel

@@ -1,5 +1,11 @@
-import { Link } from '@tanstack/react-router'
-import { LogOutIcon, MoreVerticalIcon, UserCircleIcon } from 'lucide-react'
+import { Link, useNavigate } from '@tanstack/react-router'
+import {
+  LayoutDashboard,
+  LogOutIcon,
+  MoreVerticalIcon,
+  UserCircleIcon,
+} from 'lucide-react'
+import { toast } from 'sonner'
 
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import {
@@ -16,16 +22,27 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '~/components/ui/sidebar'
+import { signOut, useSession } from '~/lib/auth/client'
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
+export function NavUser() {
+  const navigate = useNavigate()
+  const { data, isPending } = useSession()
+
+  if (isPending) return null
+  if (!data) return null // or redirect to login
+
+  const user = data?.user
+  let initials = 'CU'
+
+  if (user) {
+    initials = user.name
+      ?.split(' ')
+      .map((n) => n[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase()
   }
-}) {
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -36,24 +53,32 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg grayscale">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarImage src={user.image ?? ''} alt={user.name} />
+                <AvatarFallback className="rounded-lg">
+                  {initials}
+                </AvatarFallback>
               </Avatar>
+
               <MoreVerticalIcon className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
             side="bottom"
             align="end"
             sideOffset={4}
           >
+            {/* User Info */}
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarImage src={user.image ?? ''} alt={user.name} />
+                  <AvatarFallback className="rounded-lg">
+                    {initials}
+                  </AvatarFallback>
                 </Avatar>
+
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
                   <span className="truncate text-xs text-muted-foreground">
@@ -62,15 +87,48 @@ export function NavUser({
                 </div>
               </div>
             </DropdownMenuLabel>
+
             <DropdownMenuSeparator />
+
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <UserCircleIcon />
-                <Link to="/dashboard/profile">Profile</Link>
+              <DropdownMenuItem asChild>
+                <Link to="/dashboard">
+                  <LayoutDashboard />
+                  Dashboard
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/dashboard/profile">
+                  <UserCircleIcon />
+                  Profile
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+
+            {/* Logout */}
+            <DropdownMenuItem
+              onClick={async () => {
+                const deletedUser = user.name
+                await signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      toast.success(`${deletedUser} logged out successfully`, {
+                        position: 'top-center',
+                        action: {
+                          label: 'Undo',
+                          onClick: () => {
+                            navigate({ to: '/', replace: true })
+                          },
+                        },
+                      })
+                      navigate({ to: '/', replace: true })
+                    },
+                  },
+                })
+              }}
+            >
               <LogOutIcon />
               Log out
             </DropdownMenuItem>

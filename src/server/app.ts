@@ -12,11 +12,17 @@ import { AppBindings } from './types'
 export const emojiIcon = import.meta.env.DEV ? '💧' : '🔥'
 
 const app = new Hono<AppBindings>({ strict: false })
+
 app.use(envMiddleware)
 app.use(logMiddleware)
 app.use(dbMiddleware)
 app.use(betterAuthMiddleware)
 app.use(serveEmojiFavicon(emojiIcon))
+
+app.use((c, next) => {
+  if (c.req.path.startsWith('/api')) return next()
+  return serveStatic({ path: './dist/public/index.html' })(c, next)
+})
 
 if (import.meta.env.DEV) {
   app.use(logger())
@@ -27,12 +33,21 @@ app.on(['POST', 'GET'], '/api/auth/*', (c) => {
   return auth.handler(c.req.raw)
 })
 
+app.get('/api/users', async (c) => {
+  const db = c.get('db')
+  const users = await db.user.findMany()
+
+  return c.json(
+    {
+      data: users,
+    },
+    200,
+  )
+})
+
 if (import.meta.env.PROD) {
   // IDK why this doens't work in dev
   app.use(compress())
 }
-
-app.use('/*', serveStatic({ root: './dist/public' }))
-app.use('/*', serveStatic({ path: './dist/public/index.html' }))
 
 export default app

@@ -12,14 +12,6 @@ import {
   SidebarMenuItem,
 } from '~/components/ui/sidebar'
 
-const data = {
-  user: {
-    name: 'IFive',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
-  },
-}
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
@@ -39,7 +31,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )

@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { Logger } from 'pino'
-import type { Auth, Session, User } from '~/auth'
+import type { Auth, Session, User } from '~/lib/auth/index'
 import type { prisma } from '~/lib/db/prisma'
 import { EnvVars } from './env'
 

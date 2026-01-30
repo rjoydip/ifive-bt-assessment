@@ -1,17 +1,13 @@
 import { Separator } from '@radix-ui/react-separator'
 import { Link } from '@tanstack/react-router'
-import { ArrowUpCircleIcon } from 'lucide-react'
+import { ArrowUpCircleIcon, LogIn } from 'lucide-react'
 import { NavUser } from '~/components/nav-user'
-
-const data = {
-  user: {
-    name: 'IFive BT',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
-  },
-}
+import { useSession } from '~/lib/auth/client'
 
 export function SiteHeader() {
+  const { data } = useSession()
+  const user = data?.user
+
   return (
     <header className="group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
@@ -25,7 +21,13 @@ export function SiteHeader() {
         </Link>
 
         <div className="ml-auto flex items-center gap-2">
-          <NavUser user={data.user} />
+          {user ? (
+            <NavUser />
+          ) : (
+            <Link to="/signin">
+              <LogIn />
+            </Link>
+          )}
         </div>
       </div>
     </header>

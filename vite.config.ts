@@ -36,9 +36,7 @@ export default defineConfig(() => {
         minify: true,
         entry: 'src/root.tsx',
         inject: {
-          data: {
-            title: 'index',
-          },
+          data: {},
         },
       }),
       sri(),
@@ -49,7 +47,7 @@ export default defineConfig(() => {
           const result = config({
             quiet: true,
             override: true,
-            // debug: true,
+            debug: false,
           })
           if (result.error) {
             throw result.error
@@ -57,7 +55,7 @@ export default defineConfig(() => {
           return result.parsed!
         },
         exclude: [
-          /^(?!\/(favicon|api|trpc)).*/, // exclude all routes that are not /api or /trpc or favicon
+          /^(?!\/(favicon|api)).*/, // exclude all routes that are not /api or favicon
         ],
       }),
       tsupBuild({
@@ -68,6 +66,7 @@ export default defineConfig(() => {
         silent: true,
         treeshake: true,
         cjsInterop: true,
+        external: ['@prisma/client'],
         env: {
           //@ts-expect-error does actually support boolean
           DEV: false,

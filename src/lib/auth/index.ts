@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth'
 import { prismaAdapter } from 'better-auth/adapters/prisma'
-import { admin, apiKey, organization } from 'better-auth/plugins'
+import { admin } from 'better-auth/plugins'
 import { tanstackStartCookies } from 'better-auth/tanstack-start'
 import { nanoid } from 'nanoid'
 import { z } from 'zod'
@@ -28,22 +28,6 @@ export const createAuth = (env: EnvVars, db: AppDb) =>
       admin({
         allowImpersonatingAdmins: true,
       }),
-      apiKey({
-        rateLimit: {
-          enabled: true,
-          timeWindow: 1000 * 60 * 60 * 24,
-          maxRequests: 5_000,
-        },
-        apiKeyHeaders: ['x-api-key'],
-        permissions: {
-          defaultPermissions: () => {
-            return {
-              task: ['read', 'write'],
-            }
-          },
-        },
-      }),
-      organization(),
       tanstackStartCookies(),
     ],
   })

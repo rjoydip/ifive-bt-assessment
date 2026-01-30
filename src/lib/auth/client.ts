@@ -1,9 +1,5 @@
 import { isServer } from '@tanstack/react-query'
-import {
-  adminClient,
-  apiKeyClient,
-  organizationClient,
-} from 'better-auth/client/plugins'
+import { adminClient } from 'better-auth/client/plugins'
 import { createAuthClient as createAuthClientClient } from 'better-auth/react'
 
 function createAuthClientServer() {
@@ -27,7 +23,7 @@ const createAuthClient: typeof createAuthClientClient = isServer
   : createAuthClientClient
 
 export const authClient = createAuthClient({
-  plugins: [adminClient(), apiKeyClient(), organizationClient()],
+  plugins: [adminClient()],
 })
 
 export type Session = typeof authClient.$Infer.Session

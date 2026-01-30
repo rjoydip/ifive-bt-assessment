@@ -1,194 +1,150 @@
 # Leave Management ERD
 
 ```mermaid
+erDiagram
 
-    User ||--o{ Session : "has"
-    User ||--o{ Account : "has"
-    User ||--o{ Member : "has"
-    User ||--o{ Invitation : "creates"
-    User ||--o{ Apikey : "has"
-    
-    Organization ||--o{ Member : "has"
-    Organization ||--o{ Invitation : "has"
-    
-    Member }o--|| Organization : "belongs to"
-    Member }o--|| User : "is"
-        
-    User ||--o{ LeaveCredit : "receives"
-    User ||--o| LeaveBalance : "has"
-    User ||--o{ LeaveRequest : "creates"
-    User ||--o{ LeaveRequest : "approves"
-    User ||--o{ LeaveTransaction : "has"
-    
-    LeaveCredit ||--o{ LeaveTransaction : "generates"
-    LeaveCredit ||--o{ CreditUtilization : "tracked in"
-    
-    LeaveRequest ||--o{ LeaveTransaction : "generates"
-    LeaveRequest ||--o{ CreditUtilization : "uses"
-    
-    LeaveTransaction }o--|| User : "belongs to"
-    LeaveTransaction }o--o| LeaveCredit : "references"
-    LeaveTransaction }o--o| LeaveRequest : "references"
-    
-    CreditUtilization }o--|| LeaveRequest : "belongs to"
-    CreditUtilization }o--|| LeaveCredit : "deducts from"
-        
-    User {
-        string id PK
-        string name
-        string email UK
-        boolean emailVerified
-        string image
-        datetime createdAt
-        datetime updatedAt
-        boolean banned
-        string banReason
-        datetime banExpires
-        string role
-    }
-    
-    Session {
-        string id PK
-        datetime expiresAt
-        string token UK
-        datetime createdAt
-        datetime updatedAt
-        string ipAddress
-        string userAgent
-        string userId FK
-        string impersonatedBy
-        string activeOrganizationId
-    }
-    
-    Account {
-        string id PK
-        string accountId
-        string providerId
-        string userId FK
-        string accessToken
-        string refreshToken
-        string idToken
-        datetime accessTokenExpiresAt
-        datetime refreshTokenExpiresAt
-        string scope
-        string password
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    Organization {
-        string id PK
-        string name
-        string slug UK
-        string logo
-        datetime createdAt
-        string metadata
-    }
-    
-    Member {
-        string id PK
-        string organizationId FK
-        string userId FK
-        string role
-        datetime createdAt
-    }
-    
-    Invitation {
-        string id PK
-        string organizationId FK
-        string email
-        string role
-        string status
-        datetime expiresAt
-        datetime createdAt
-        string inviterId FK
-    }
-    
-    Apikey {
-        string id PK
-        string name
-        string start
-        string prefix
-        string key UK
-        string userId FK
-        int refillInterval
-        int refillAmount
-        datetime lastRefillAt
-        boolean enabled
-        boolean rateLimitEnabled
-        int rateLimitTimeWindow
-        int rateLimitMax
-        int requestCount
-        int remaining
-        datetime lastRequest
-        datetime expiresAt
-        datetime createdAt
-        datetime updatedAt
-        string permissions
-        string metadata
-    }
-    
-    LeaveCredit {
-        string id PK
-        string userId FK "nullable-for-all-users"
-        float credits "hours"
-        float hoursPerDay "default-8"
-        datetime expiresAt "expiration-date"
-        string notes
-        datetime postedAt
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    LeaveBalance {
-        string id PK
-        string userId FK UK
-        float totalCredits "sum-of-posted"
-        float usedCredits "sum-of-used"
-        float expiredCredits "sum-of-expired"
-        float availableCredits "calculated"
-        datetime lastCalculatedAt
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    LeaveRequest {
-        string id PK
-        string userId FK
-        datetime startDate
-        datetime endDate
-        float hoursPerDay
-        float totalHours "calculated"
-        string reason
-        string status "pending-approved-rejected"
-        string approvedBy FK
-        datetime approvedAt
-        datetime rejectedAt
-        string rejectionReason
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    LeaveTransaction {
-        string id PK
-        string userId FK
-        string leaveCreditId FK "nullable"
-        string leaveRequestId FK "nullable"
-        string type "POSTED-USED-EXPIRED-ADJUSTMENT"
-        float hours "positive-or-negative"
-        float balanceBefore
-        float balanceAfter
-        string notes
-        datetime createdAt
-    }
-    
-    CreditUtilization {
-        string id PK
-        string leaveRequestId FK
-        string leaveCreditId FK
-        float hoursUsed "FIFO-tracking"
-        datetime createdAt
-    }
+%% =========================
+%% USER & AUTH
+%% =========================
+
+user {
+  string id PK
+  string name
+  string email UNIQUE
+  boolean emailVerified
+  string image
+  datetime createdAt
+  datetime updatedAt
+  boolean banned
+  string banReason
+  datetime banExpires
+  string role
+}
+
+session {
+  string id PK
+  datetime expiresAt
+  string token UNIQUE
+  datetime createdAt
+  datetime updatedAt
+  string ipAddress
+  string userAgent
+  string userId FK
+  string impersonatedBy
+  string activeOrganizationId
+}
+
+account {
+  string id PK
+  string accountId
+  string providerId
+  string userId FK
+  string accessToken
+  string refreshToken
+  string idToken
+  datetime accessTokenExpiresAt
+  datetime refreshTokenExpiresAt
+  string scope
+  string password
+  datetime createdAt
+  datetime updatedAt
+}
+
+verification {
+  string id PK
+  string identifier
+  string value
+  datetime expiresAt
+  datetime createdAt
+  datetime updatedAt
+}
+
+%% =========================
+%% LEAVE MANAGEMENT
+%% =========================
+
+leave_credit {
+  string id PK
+  string userId FK
+  float credits
+  float hoursPerDay
+  datetime expiresAt
+  string notes
+  datetime postedAt
+  datetime createdAt
+  datetime updatedAt
+}
+
+leave_balance {
+  string id PK
+  string userId UNIQUE FK
+  float totalCredits
+  float usedCredits
+  float expiredCredits
+  float availableCredits
+  datetime lastCalculatedAt
+  datetime createdAt
+  datetime updatedAt
+}
+
+leave_request {
+  string id PK
+  string userId FK
+  datetime startDate
+  datetime endDate
+  float hoursPerDay
+  float totalHours
+  string reason
+  string status
+  string approvedBy FK
+  datetime approvedAt
+  datetime rejectedAt
+  string rejectionReason
+  datetime createdAt
+  datetime updatedAt
+}
+
+leave_transaction {
+  string id PK
+  string userId FK
+  string leaveCreditId FK
+  string leaveRequestId FK
+  string type
+  float hours
+  float balanceBefore
+  float balanceAfter
+  string notes
+  datetime createdAt
+}
+
+credit_utilization {
+  string id PK
+  string leaveRequestId FK
+  string leaveCreditId FK
+  float hoursUsed
+  datetime createdAt
+}
+
+%% =========================
+%% RELATIONSHIPS
+%% =========================
+
+user ||--o{ session : has
+user ||--o{ account : has
+
+user ||--o{ leave_credit : "posted credits"
+user ||--|| leave_balance : balance
+user ||--o{ leave_request : requests
+user ||--o{ leave_transaction : transactions
+
+leave_request }o--|| user : approver
+
+leave_credit ||--o{ leave_transaction : generates
+leave_request ||--o{ leave_transaction : consumes
+
+leave_request ||--o{ credit_utilization : uses
+leave_credit ||--o{ credit_utilization : allocated_from
+
 ```
 
 ## ERD Diagram

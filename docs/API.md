@@ -9,6 +9,8 @@ Complete REST API for leave management system with FIFO credit deduction.
 - [Authentication](#authentication)
 - [Cron Jobs](#cron-jobs)
 
+> Note: `JWT` bearer tokens are not required at this stage because `JWT authentication` has not yet been implemented in the backend. The APIs are currently secured using the `Better Auth` **session-based** authentication mechanism.
+
 ---
 
 ## Installation

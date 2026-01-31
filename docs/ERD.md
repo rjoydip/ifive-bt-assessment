@@ -149,7 +149,7 @@ leave_credit ||--o{ credit_utilization : allocated_from
 
 ## ERD Diagram
 
-![ERD Diagram](/ERD.diagram.png)
+![ERD Diagram](/docs/ERD.diagram.png)
 
 ## Entity Relationship Details
 

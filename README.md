@@ -6,6 +6,10 @@ This leave management system implements three core functionalities as specified:
 2. **Utilization Functionality**: Users file for PTO (Personal Time Off)
 3. **Deduction Functionality**: System deducts credits using FIFO logic for both utilization and expiration
 
+## IFive BT Assessment
+
+![Assessment Details](/docs/ifive-bt-assessment.pdf)
+
 ---
 
 ## Business Requirements
@@ -783,6 +787,7 @@ The FIFO logic ensures fair and predictable credit consumption, while the transa
 
 ## Resources
 
+- [Assessment Details](/docs/ifive-bt-assessment.pdf)
 - [ERD Documentation](/docs/ERD.md)
 - [ERD Diagram](/docs/ERD.diagram.png)
 - [API Documentation](/docs/API.md)

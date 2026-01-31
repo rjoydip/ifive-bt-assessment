@@ -10,7 +10,7 @@ erDiagram
 user {
   string id PK
   string name
-  string email UNIQUE
+  string email
   boolean emailVerified
   string image
   datetime createdAt
@@ -24,7 +24,7 @@ user {
 session {
   string id PK
   datetime expiresAt
-  string token UNIQUE
+  string token
   datetime createdAt
   datetime updatedAt
   string ipAddress
@@ -77,7 +77,7 @@ leave_credit {
 
 leave_balance {
   string id PK
-  string userId UNIQUE FK
+  string userId FK
   float totalCredits
   float usedCredits
   float expiredCredits
@@ -132,7 +132,7 @@ credit_utilization {
 user ||--o{ session : has
 user ||--o{ account : has
 
-user ||--o{ leave_credit : "posted credits"
+user ||--o{ leave_credit : posts
 user ||--|| leave_balance : balance
 user ||--o{ leave_request : requests
 user ||--o{ leave_transaction : transactions
@@ -144,7 +144,6 @@ leave_request ||--o{ leave_transaction : consumes
 
 leave_request ||--o{ credit_utilization : uses
 leave_credit ||--o{ credit_utilization : allocated_from
-
 ```
 
 ## ERD Diagram

@@ -8,7 +8,7 @@ This leave management system implements three core functionalities as specified:
 
 ## IFive BT Assessment
 
-![Assessment Details](/docs/ifive-bt-assessment.pdf)
+[Assessment Details](/docs/ifive-bt-assessment.pdf)
 
 ---
 

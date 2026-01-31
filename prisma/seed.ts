@@ -1,11 +1,4 @@
-import { PrismaNeon } from '@prisma/adapter-neon'
-import { PrismaClient } from '~/lib/db/generated/client'
-import { env } from '~/server/env'
-
-const adapter = new PrismaNeon({
-  connectionString: env().DATABASE_URL,
-})
-export const prisma = new PrismaClient({ adapter })
+import { prisma } from '~/lib/db/prisma'
 
 async function main() {
   console.log('Seed complete!')

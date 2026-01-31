@@ -749,6 +749,7 @@ if (availableCredits < 8) {
 }
 ```
 
+The FIFO logic ensures fair and predictable credit consumption, while the transaction log provides full transparency and auditability.
 
 ## Tech Stack
 
@@ -780,5 +781,10 @@ if (availableCredits < 8) {
 
 - [tsup](https://tsup.egoist.dev/) bundling
 
+## Resources
 
-The FIFO logic ensures fair and predictable credit consumption, while the transaction log provides full transparency and auditability.
+- [ERD Documentation](/docs/ERD.md)
+- [ERD Diagram](/docs/ERD.diagram.png)
+- [API Documentation](/docs/API.md)
+- [Setup Documentation](/docs/SETUP.md)
+- [Presentation](/docs/IFive%20BT%20Assessment.pdf)

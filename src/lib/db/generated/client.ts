@@ -55,31 +55,6 @@ export type Session = Prisma.SessionModel
  */
 export type Account = Prisma.AccountModel
 /**
- * Model Verification
- * 
- */
-export type Verification = Prisma.VerificationModel
-/**
- * Model Organization
- * 
- */
-export type Organization = Prisma.OrganizationModel
-/**
- * Model Member
- * 
- */
-export type Member = Prisma.MemberModel
-/**
- * Model Invitation
- * 
- */
-export type Invitation = Prisma.InvitationModel
-/**
- * Model Apikey
- * 
- */
-export type Apikey = Prisma.ApikeyModel
-/**
  * Model LeaveCredit
  * 
  */
@@ -104,3 +79,8 @@ export type LeaveTransaction = Prisma.LeaveTransactionModel
  * 
  */
 export type CreditUtilization = Prisma.CreditUtilizationModel
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = Prisma.VerificationModel
